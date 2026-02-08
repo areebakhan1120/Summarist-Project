@@ -67,10 +67,10 @@ export default function BooksSection({ title, subTitle, apiUrl }: BooksSectionPr
     <div className="max-w-[1070px] w-full mx-auto px-6">
       <div className="py-10 w-full">
         <div className="block">
-          <div className="text-[22px] font-bold text-[#032b41] mb-4">{title}</div>
-          {subTitle && <div className="font-light text-[#394547] mb-4">{subTitle}</div>}
+          <div className="text-[22px] font-bold text-[#032b41] mb-4 text-center md:text-left">{title}</div>
+          {subTitle && <div className="font-light text-[#394547] mb-4 text-center md:text-left">{subTitle}</div>}
 
-          <div className="relative -mx-6 md:-mx-16 mb-8 overflow-visible">
+          <div className="relative mb-8">
             {/* LEFT ARROW */}
             <button
               onClick={() => scroll("left")}
@@ -83,11 +83,11 @@ export default function BooksSection({ title, subTitle, apiUrl }: BooksSectionPr
             {/* CAROUSEL */}
             <div
               ref={carouselRef}
-              className="no-scrollbar flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth max-w-[1070px] mx-auto px-6"
+              className="no-scrollbar flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth w-full px-1"
             >
               {loading ? (
                  [...Array(5)].map((_, i) => (
-                    <div key={i} className="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[200px] mb-8">
+                    <div key={i} className="flex-shrink-0 w-[260px] sm:w-[240px] md:w-[200px] mb-8">
                         <Skeleton className="h-[240px] w-full rounded-md mb-2 bg-gray-200" />
                         <Skeleton className="h-4 w-3/4 mb-1 bg-gray-200" />
                         <Skeleton className="h-3 w-1/2 bg-gray-200" />

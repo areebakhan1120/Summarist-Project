@@ -85,39 +85,31 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="bg-white border-b border-[#e1e7ea] h-[80px] z-20 relative">
-      <div
-        className="
-          relative flex items-center justify-start lg:justify-end
-          max-w-[1070px] mx-auto h-full
-          px-6 lg:px-8
-        "
-      >
-        <div
-          ref={wrapperRef}
-          className="flex items-center gap-6 max-w-[340px] w-full mx-auto lg:mx-0 relative"
-        >
-          <div className="flex items-center w-full">
-            <div className="relative flex items-center gap-2 w-full">
-              <input
-                type="text"
-                placeholder="Search for books"
-                value={query}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                onFocus={() => query.length > 0 && setShowDropdown(true)}
-                className="h-10 w-full px-4 pr-12 py-0 outline-none bg-[#f1f6f4] text-[#042330] border-2 border-[#e1e7ea] rounded-md transition-all duration-200 focus:border-[#2bd97c]"
-              />
-              <button 
-                onClick={() => {
-                    if (filteredBooks.length > 0) {
-                        traverseToBook(filteredBooks[0].id);
-                    }
-                }}
-                className="flex items-center justify-end absolute h-full right-2 border-l-2 border-l-[#e1e7ea] pl-2 cursor-pointer hover:text-[#2bd97c] transition-colors"
-                >
-                <AiOutlineSearch size={18} />
-              </button>
+   <div className="bg-white border-b border-[#e1e7ea] h-[80px] z-20 relative">
+  <div className="relative flex items-center justify-start lg:justify-end max-w-[1070px] mx-auto h-full px-6 lg:px-8">
+    <div
+      ref={wrapperRef}
+      className="flex items-center gap-6 w-full max-w-[400px] sm:max-w-[340px] lg:max-w-[400px]"
+    >
+      <div className="flex items-center w-full">
+        <div className="relative flex items-center gap-2 w-full">
+          <input
+            type="text"
+            placeholder="Search for books"
+            value={query}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            onFocus={() => query.length > 0 && setShowDropdown(true)}
+            className="h-10 w-full px-4 pr-12 py-0 outline-none bg-[#f1f6f4] text-[#042330] border-2 border-[#e1e7ea] rounded-md transition-all duration-200 focus:border-[#2bd97c]"
+          />
+          <button
+            onClick={() =>
+              filteredBooks.length > 0 && traverseToBook(filteredBooks[0].id)
+            }
+            className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center h-full pl-2 cursor-pointer hover:text-[#2bd97c] transition-colors"
+          >
+            <AiOutlineSearch size={18} />
+          </button>
             </div>
           </div>
 

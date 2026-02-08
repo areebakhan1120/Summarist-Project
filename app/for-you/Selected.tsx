@@ -46,10 +46,9 @@ export default function Selected({ books }: SelectedProps) {
   };
 
   return (
-    <div className="max-w-[1070px] w-full mx-auto px-6">
-      <div className="py-10 w-full">
-        <div className="wrapper">
-          <div className="text-[22px] font-bold text-[#032b41] mb-4">
+    <div className="max-w-[1070px] w-full mx-auto px-4 sm:px-6">
+      <div className="py-8 w-full">
+          <div className="text-[22px] font-bold text-[#032b41] mb-4 text-center md:text-left">
             Selected just for you
           </div>
 
@@ -57,50 +56,59 @@ export default function Selected({ books }: SelectedProps) {
             <div
               key={book.id}
               onClick={() => handleBookClick(book)}
-              className="flex justify-between w-full mx-auto sm:w-[95%] md:w-[85%] lg:w-[calc((100%/3)*2)] bg-[#fbefd6] rounded p-6 mb-6 gap-6 cursor-pointer transition-all duration-200 hover:bg-[#f7dfb0] flex-col sm:flex-row"
+              className="flex flex-col md:flex-row w-full md:w-[90%] lg:w-[calc((100%/3)*2)] mx-auto bg-[#fbefd6] rounded p-6 gap-6 cursor-pointer hover:bg-[#f7dfb0] transition-colors duration-200 items-center md:items-stretch"
             >
-              <div className="text-[#032b41] w-full sm:w-2/5">
+              {/* Subtitle Section */}
+              <div className="w-full md:w-2/5 flex flex-col justify-center text-center md:text-left order-1">
                 <div
-                  className="line-clamp-2"
+                  className="md:line-clamp-2"
                   style={{
                     display: "-webkit-box",
-                    WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
                     overflow: "hidden",
                   }}
                 >
-                  {book.subTitle}
+                  {book.subTitle || book.summary}
                 </div>
               </div>
-              <div className="hidden sm:block w-px bg-[#bac8ce]"></div>
-              <div className="flex gap-4 w-full sm:w-3/5">
-                <figure className="h-[140px] w-[140px] min-w-[140px]">
+
+              {/* Vertical Divider (Hidden on mobile) */}
+              <div className="hidden md:block w-px bg-[#bac8ce] flex-shrink-0 order-2"></div>
+
+              {/* Image & Details Section */}
+              <div className="w-full md:w-3/5 flex flex-col sm:flex-row gap-6 items-center sm:items-start order-3">
+                {/* Image */}
+                <figure className="h-[140px] w-[140px] min-w-[140px] flex-shrink-0">
                   {book.imageLink && (
                     <img
                       src={book.imageLink}
                       alt={book.title}
-                      className="h-full w-full object-cover rounded"
+                      className="h-full w-full object-cover rounded shadow-sm"
                     />
                   )}
                 </figure>
-                <div className="w-full">
-                  <div className="font-semibold text-[#032b41] mb-2">
+
+                {/* Details */}
+                <div className="w-full text-center sm:text-left flex flex-col justify-center">
+                  <div className="font-semibold text-[#032b41] mb-2 text-lg">
                     {book.title}
                   </div>
                   <div className="text-[14px] text-[#394547] mb-4">
                     {book.author}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center w-[40px] min-w-[40px] h-[40px]">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          router.push(`/player/${book.id}`);
-                        }}
-                      >
-                        <IoMdPlayCircle size={30} />
-                      </button>
-                    </div>
+                  
+                  {/* Player / Action */}
+                  <div className="flex items-center gap-3 justify-center sm:justify-start">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/player/${book.id}`);
+                      }}
+                      className="hover:scale-110 transition-transform flex-shrink-0"
+                    >
+                      <IoMdPlayCircle size={40} className="text-[#032b41]" />
+                    </button>
+                    
                     <div className="text-[14px] font-medium text-[#032b41]">
                       {book.audioLink ? "Listen Now" : "Read Now"}
                       {book.audioLink && (
@@ -115,7 +123,6 @@ export default function Selected({ books }: SelectedProps) {
               </div>
             </div>
           ))}
-        </div>
       </div>
     </div>
   );
