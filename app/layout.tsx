@@ -33,11 +33,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <LibraryProvider>
               {showSidebarAndSearch && <SideNav />}
               <div
-                className={`flex-1 flex flex-col transition-all duration-300
-  ${showSidebarAndSearch ? "lg:ml-[200px]" : ""} max-[769px]:mx-auto`}
+                className={`flex-1 flex flex-col transition-all duration-300 ${
+                  showSidebarAndSearch ? "lg:ml-[200px]" : ""
+                }`}
               >
                {showSidebarAndSearch && <SearchBar />}
-                <main className="flex-1 px-4 sm:px-6 lg:px-8">{children}</main>
+                <main className="flex-1 flex flex-col transition-all duration-300">
+                  {children}
+                </main>
               </div>
             </LibraryProvider>
           </FontSizeProvider>

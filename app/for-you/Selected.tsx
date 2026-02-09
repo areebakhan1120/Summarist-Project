@@ -56,18 +56,11 @@ export default function Selected({ books }: SelectedProps) {
             <div
               key={book.id}
               onClick={() => handleBookClick(book)}
-              className="flex flex-col md:flex-row w-full md:w-[90%] lg:w-[calc((100%/3)*2)] mx-auto bg-[#fbefd6] rounded p-6 gap-6 cursor-pointer hover:bg-[#f7dfb0] transition-colors duration-200 items-center md:items-stretch"
+              className="flex flex-col md:flex-row w-full lg:max-w-[70%] mx-auto bg-[#fbefd6] rounded p-6 gap-6 cursor-pointer hover:bg-[#f7dfb0] transition-colors duration-200 items-center md:items-stretch"
             >
               {/* Subtitle Section */}
               <div className="w-full md:w-2/5 flex flex-col justify-center text-center md:text-left order-1">
-                <div
-                  className="md:line-clamp-2"
-                  style={{
-                    display: "-webkit-box",
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+                <div className="text-[#032b41] line-clamp-2 md:line-clamp-none font-medium">
                   {book.subTitle || book.summary}
                 </div>
               </div>
@@ -78,7 +71,7 @@ export default function Selected({ books }: SelectedProps) {
               {/* Image & Details Section */}
               <div className="w-full md:w-3/5 flex flex-col sm:flex-row gap-6 items-center sm:items-start order-3">
                 {/* Image */}
-                <figure className="h-[140px] w-[140px] min-w-[140px] flex-shrink-0">
+                <figure className="h-[140px] w-[140px] flex-shrink-0">
                   {book.imageLink && (
                     <img
                       src={book.imageLink}
