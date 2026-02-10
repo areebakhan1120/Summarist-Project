@@ -1,13 +1,9 @@
 "use client"
 
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCRawEpNCSwEsglanJm2PvxwVCuqqlamvY",
   authDomain: "summarist-4aab6.firebaseapp.com",
@@ -25,11 +21,8 @@ const app = initializeApp(firebaseConfig);
 if (typeof window !== "undefined") {
   try {
     // getAnalytics may throw if analytics isn't supported in the environment
-    // so guard it inside a try/catch.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { getAnalytics } = require("firebase/analytics");
     getAnalytics(app);
-  } catch (err) {
+  } catch {
     // ignore analytics initialization errors on server or unsupported envs
   }
 }

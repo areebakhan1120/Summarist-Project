@@ -17,7 +17,7 @@ const docRef = await addDoc(
     price: "price_XXXXXXXX", // 👈 your Stripe PRICE ID
     success_url: `${window.location.origin}/success`,
     cancel_url: `${window.location.origin}/cancel`,
-    mode: "subscription", // optional but recommended
+    mode: "subscription", 
   }
 );
 
